@@ -6,12 +6,9 @@ import {Link} from 'react-router-dom'
 
 class Search extends React.Component {
 
-  state = {
-    query: ''
-  }
-
   render() {
-    const query = this.state.query;
+
+    const updateShelf = this.props.updateShelf;
 
     return (
         <div className="search-books">

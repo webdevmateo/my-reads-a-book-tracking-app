@@ -8,6 +8,7 @@ class ListBooks extends React.Component {
      render () {
 
       const books = this.props.books;
+      const updateShelf = this.props.updateShelf;
 
           return (
                <div className="list-books">
@@ -21,18 +22,21 @@ class ListBooks extends React.Component {
                       books={books.filter((book) => {
                         return book.shelf === 'currentlyReading';
                         })}
+                      updateShelf={updateShelf}
                     />
                     <Shelf
                       name="Want to Read"
                       books={books.filter((book) => {
                         return book.shelf === 'wantToRead';
                       })}
+                      updateShelf={updateShelf}
                     />
                     <Shelf
                       name="Read"
                       books={books.filter((book) => {
                         return book.shelf === 'read';
                       })}
+                      updateShelf={updateShelf}
                     />
                  </div>
                </div>
