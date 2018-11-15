@@ -5,18 +5,17 @@ import Book from './components/Book'
 
 class Search extends React.Component {
 
-  state = {
-    books: [],
-    results: [],
-    query: ''
+  constructor (props) {
+    super(props);
+    this.state = {
+      books: this.props.books,
+      results: [],
+      query: ''
+    }
   }
 
   componentDidMount() {
-    BooksAPI.getAll().then((books) => {
-      this.setState({
-        books: books
-      })
-    })
+    console.log(this.state.books);
   }
 
   updateQuery = (query) => {
@@ -45,7 +44,10 @@ class Search extends React.Component {
       } else {
         response.forEach(b => {
           let match = this.state.books.filter(B => B.id === b.id);
-          b.shelf = match[0] ? match[0].shelf : null;
+          b.shelf = match[0] ? match[0].shelf : 'none';
+          if (match[0]) {
+            b.shelf = match[0].shelf;
+          }
         });
         return this.setState({
           results: response
