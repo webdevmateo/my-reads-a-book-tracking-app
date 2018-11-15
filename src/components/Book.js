@@ -12,7 +12,7 @@ class Book extends React.Component {
                <li>
                  <div className="book">
                    <div className="book-top">
-                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail || book.imageLinks.smallThumbnail || ''}")` }}></div>
+                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${(book.imageLinks && book.imageLinks.thumbnail) || ''}")` }}></div>
                      <div className="book-shelf-changer">
                        <select value={book.shelf || 'none'} onChange={(e) => {
                          updateShelf(book, e.target.value);

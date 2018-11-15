@@ -6,8 +6,12 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 
 class BooksApp extends React.Component {
-  state = {
-    books: []
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: [],
+    }
   }
 
   componentDidMount() {
