@@ -45,9 +45,6 @@ class Search extends React.Component {
         response.forEach(b => {
           let match = this.state.books.filter(B => B.id === b.id);
           b.shelf = match[0] ? match[0].shelf : 'none';
-          if (match[0]) {
-            b.shelf = match[0].shelf;
-          }
         });
         return this.setState({
           results: response
