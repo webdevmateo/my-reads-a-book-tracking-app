@@ -5,17 +5,18 @@ import Book from './components/Book'
 
 class Search extends React.Component {
 
-  constructor (props) {
-    super(props);
-    this.state = {
-      books: this.props.books,
+  state = {
+      books: [],
       results: [],
       query: ''
     }
-  }
 
   componentDidMount() {
-    console.log(this.state.books);
+    BooksAPI.getAll().then((books) => {
+      this.setState({
+        books: books
+      })
+    })
   }
 
   updateQuery = (query) => {
@@ -36,7 +37,6 @@ class Search extends React.Component {
 
     BooksAPI.search(query.trim())
     .then((response) => {
-      console.log(response);
       if (response.error) {
         return this.setState({
           results: []
